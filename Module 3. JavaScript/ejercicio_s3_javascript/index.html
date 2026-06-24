@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workspace Inteligente - Riwi</title>
+    <link rel="stylesheet" href="./src/css/styles.css">
+</head>
+
+<body>
+    <section class="app-container" id="app-root">
+
+        <header class="app-header">
+            <h1>Workspace Inteligente</h1>
+        </header>
+
+        <main class="app-content">
+
+            <section class="task-management" aria-labelledby="mgmt-heading">
+
+                <form id="task-form" class="task-form">
+                    <h3>Add Taks</h3>
+                    <input type="text" id="task-tittle" placeholder="Task Title" required autocomplete="off">
+                    <input type="text" id="task-input" placeholder="Task Description" required autocomplete="off">
+                    <button type="submit" class="btn-primary">Add Task</button>
+                </form>
+
+                <form id="search-task-form" class="task-form">
+                    <h3>Search Taks</h3>
+                    <input type="text" id="search-task-tittle" placeholder="Search Task Title">
+                </form>
+
+            </section>
+
+            <section class="task-status" aria-labelledby="status-heading">
+                <fieldset class="filters-group">
+
+                    <label class="filter-option">
+                        <input type="radio" name="task-filter" value="all" checked>
+                        <span class="filter-label">All</span>
+                    </label>
+
+                    <label class="filter-option">
+                        <input type="radio" name="task-filter" value="pending">
+                        <span class="filter-label">Pending</span>
+                    </label>
+
+                    <label class="filter-option">
+                        <input type="radio" name="task-filter" value="completed">
+                        <span class="filter-label">Completed</span>
+                    </label>
+                </fieldset>
+            </section>
+
+            <section class="task-display" aria-labelledby="list-heading">
+
+                <ul id="task-list" class="task-list" aria-live="polite" aria-atomic="true">
+                    
+                </ul>
+            </section>
+
+        </main>
+
+    </section>
+
+    <script src="./app.js"></script>
+</body>
+
+</html>

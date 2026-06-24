@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Shattered Riffs</title>
+    <link rel="shortcut icon" href="./assets/icons/logo.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./assets/css/styles2.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <img class="logo" src="./assets/icons/logo.ico" alt="logo">
+        <h1 class="BandName">Shattered Riffs</h1>
+
+        <!-- Nav for desktop / hamburger for mobile -->
+        <nav class="nav">
+            <ul class="nav__list">
+                <li><a href="#events">Events</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#media">Media</a></li>
+                <li><a href="./README.md" target="_blank">Contact</a></li>
+            </ul>
+        </nav>
+
+        <!-- Hint for JS (optional extra points) -->
+        <button class="menu-toggle">☰</button>
+    </header>
+
+    <main>
+
+        <!-- HERO -->
+        <section class="hero">
+            <section class="simple-info">
+                <h2>Rock the Night</h2>
+                <div></div>
+                <p>Upcoming Tour</p>
+            </section>
+            <a href="#events">View Events</a>
+        </section>
+
+        <!-- EVENTS -->
+        <section id="events" class="events container">
+            <h2>Upcoming Events</h2>
+
+            <!-- Extra points: table -->
+            <table class="events__table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>City</th>
+                        <th>Venue</th>
+                        <th>Tickets</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>15 May</td>
+                        <td>Madrid</td>
+                        <td>Sala Sol</td>
+                        <td><button>Buy</button></td>
+                    </tr>
+                    <tr>
+                        <td>18 May</td>
+                        <td>Barcelona</td>
+                        <td>Razzmatazz</td>
+                        <td><button>Buy</button></td>
+                    </tr>
+                    <tr>
+                        <td>22 May</td>
+                        <td>Valencia</td>
+                        <td>Moon Club</td>
+                        <td><button>Buy</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- ABOUT -->
+        <section id="about" class="about container">
+
+            <img src="./assets/img/img-2.jpg" alt="Band photo">
+
+            <article>
+                <h2>About the Band</h2>
+                <p>
+                    Shattered Riffs is a high-energy rock band known for powerful live performances
+                    and raw sound.
+                </p>
+
+                <!-- Required list -->
+                <h3>Our Influences</h3>
+                <ul>
+                    <li>Classic Rock</li>
+                    <li>Hard Rock</li>
+                    <li>Alternative</li>
+                </ul>
+            </article>
+        </section>
+
+        <!-- MEDIA -->
+        <section id="media" class="media container">
+            <h2>Multimedia</h2>
+
+            <section class="media__grid">
+                <img src="./assets/img/img-3.jpg" alt="algo">
+                <img src="./assets/img/img-1.jpg" alt="algo">
+                <div>
+                    <img src="./assets/img/img-4.jpg" alt="algo">
+                    <img src="./assets/img/img-5.jpg" alt="algo">
+                </div>
+                <img src="./assets/img/img-6.jpg" alt="algo">
+                <div>
+                    <img src="./assets/img/img-7.jpg" alt="algo">
+                    <img src="./assets/img/img-10.jpg" alt="algo">
+                </div>
+                <img src="./assets/img/img-8.jpg" alt="algo">
+            </section>
+
+            <iframe width="424" height="238" src="https://www.youtube.com/embed/_g_S4JdQGi4"
+                title="Forever (Legendary Edition) Album Livestream and Tour Announcement" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+        </section>
+
+    </main>
+
+    <button id="GoToTop">
+        ↑
+    </button>
+
+    <!-- FOOTER -->
+    <footer id="contact" class="footer">
+
+        <p>© <span id="year"></span> Shattered Riffs</p>
+
+        <!-- Another possible list -->
+        <ul class="social">
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">Spotify</a></li>
+            <li><a href="https://www.youtube.com/@bonjovi/featured">YouTube</a></li>
+        </ul>
+
+    </footer>
+
+    <script src="./assets/js/main.js"></script>
+</body>
+
+</html>

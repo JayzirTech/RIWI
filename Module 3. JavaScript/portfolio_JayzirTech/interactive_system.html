@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shattered Riffs - Age Verification</title>
+    <link rel="stylesheet" href="./interactive_system_styles/css/styles.css">
+</head>
+
+<body>
+
+    <main>
+        <section class="form-card">
+            <h1>Verification</h1>
+            <p>Please enter your details below</p>
+
+            <form id="ageForm">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="userName" placeholder="e.g. Jayzir Martinez">
+                </div>
+
+                <div class="form-group">
+                    <label>Your Age</label>
+                    <input type="number" id="userAge" placeholder="e.g. 21" step="any">
+                </div>
+
+                <button type="submit">Verify</button>
+            </form>
+
+            <div id="resultMessage"></div>
+
+            <div class="action-footer">
+                <a href="./index.html" class="btn-back">← Go to Back</a>
+            </div>
+        </section>
+    </main>
+
+    <script src="./src/interactive_system.js"></script>
+</body>
+
+</html>
