@@ -1,0 +1,111 @@
+-- Elimina todas las tablas antes de crearlas nuevamente
+DROP TABLE IF EXISTS incriptions;
+DROP TABLE IF EXISTS students;
+DROP TABLE IF EXISTS courses;
+DROP TABLE IF EXISTS teachers;
+DROP TABLE IF EXISTS academic_department;
+
+
+/*
+estudiantes: id_estudiante (PK, autoincremental), nombre_completo, correo_electronico, genero, identificacion (UNIQUE), carrera, fecha_nacimiento, fecha_ingreso
+*/
+CREATE TABLE students (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    lastname VARCHAR(100) NOT NULL,
+    identification VARCHAR(20) NOT NULL UNIQUE, -- Agregado UNIQUE para que no se repitan cédulas
+    email VARCHAR(200),
+    gender VARCHAR(25),
+    career VARCHAR(200),
+    birthday DATE,
+    date_of_entry DATE DEFAULT CURRENT_DATE, -- Por defecto toma la fecha de hoy al registrarse
+	create_at TIMESTAMP,
+	update_at TIMESTAMP
+);
+
+
+/*
+academic_department: id_academic_department (PK, autoincremental), nombre
+*/
+CREATE TABLE academic_department (
+	id SERIAL PRIMARY KEY,
+	name VARCHAR(100) NOT NULL UNIQUE,
+	create_at TIMESTAMP,
+	update_at TIMESTAMP
+);
+
+
+/*
+docentes: id_docente (PK, autoincremental), nombre_completo, correo_institucional, departamento_academico, años_experiencia
+*/
+CREATE TABLE teachers (
+	id SERIAL PRIMARY KEY,
+	name VARCHAR(100) NOT NULL,
+    lastname VARCHAR(100) NOT NULL,
+	email VARCHAR(200) UNIQUE,
+	academic_department_id INT NOT NULL,
+	years_of_experience SMALLINT NOT NULL,
+	create_at TIMESTAMP,
+	update_at TIMESTAMP,
+
+	CONSTRAINT fk_academic_department
+		FOREIGN KEY (academic_department_id)
+		REFERENCES academic_department (id)
+);
+
+
+/*
+cursos: id_curso (PK, autoincremental), nombre, codigo (UNIQUE), creditos, semestre, id_docente (FK)
+*/
+CREATE TABLE courses (
+	id SERIAL PRIMARY KEY,
+	name VARCHAR(100) NOT NULL,
+	code SMALLINT UNIQUE NOT NULL,
+	credits SMALLINT NOT NULL DEFAULT 3,
+	semester SMALLINT NOT NULL,
+	teacher_id INT NOT NULL,
+	create_at TIMESTAMP,
+	update_at TIMESTAMP,
+
+	CONSTRAINT fk_teacher
+		FOREIGN KEY (teacher_id)
+		REFERENCES teachers (id)
+);
+
+/*
+inscripciones: id_inscripcion (PK, autoincremental), id_estudiante (FK), id_curso (FK), fecha_inscripcion, calificacion_final
+*/
+CREATE TABLE incriptions (
+	id SERIAL PRIMARY KEY,
+	student_id INT NOT NULL,
+	course_id INT NOT NULL,
+	registration_date DATE DEFAULT CURRENT_DATE,
+	create_at TIMESTAMP,
+	update_at TIMESTAMP,
+
+	CONSTRAINT fk_student
+		FOREIGN KEY (student_id)
+		REFERENCES students (id),
+		
+	CONSTRAINT fk_couse
+		FOREIGN KEY (course_id)
+		REFERENCES courses (id)
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

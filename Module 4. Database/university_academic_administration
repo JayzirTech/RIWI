@@ -1,0 +1,17 @@
+DROP TABLE IF EXISTS students;
+
+-- estudiantes: id_estudiante (PK, autoincremental), nombre_completo, correo_electronico, genero, identificacion (UNIQUE), 
+-- carrera, fecha_nacimiento, fecha_ingreso
+create table students (
+	id SERIAL primary key,
+	name VARCHAR(100),
+	lastname VARCHAR(100),
+	identification VARCHAR(20) unique,
+	email VARCHAR(200),
+	gender VARCHAR(25) CHECK (gender IN ('male', 'female', 'I''d rather not say')),
+	career VARCHAR(200),
+	birthday DATE,
+	date_of_entry DATE
+);
+
+select * from students;
