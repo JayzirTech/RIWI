@@ -1,0 +1,28 @@
+services:
+
+  db:
+    image: postgres:${POSTGRES_VERSION}
+    container_name: ${POSTGRES_CONTAINER_NAME}
+    restart: always
+
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+
+    volumes:
+      - riwi-db-data-cayena:/var/lib/postgresql
+
+    ports:
+      - "${POSTGRES_PORT}:5432"
+
+  # 🚀 AGREGA ESTE NUEVO SERVICIO AQUÍ:
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8085:8080" # Esto abrirá el puerto 8080 para tu navegador
+
+volumes:
+  riwi-db-data-cayena:
+

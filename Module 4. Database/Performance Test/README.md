@@ -1,0 +1,219 @@
+## Análisis Y Normalización
+### Problemas encontrados
+- Mismos datos de los servicios realizados pero escritos de formas distintas.
+
+### Transformaciones realizados
+#### Se decide crear las siguientes entidades:
+- City
+- Branch
+- Client
+- Technician
+- Equipment Category
+- Equipment
+- Service Type
+- Service 
+- Service Detail
+
+#### Justificación la decisión tomada
+La razón de porqué se decide crear estas entidades es porque se busca separar la información de manera independiente para evitar que hayan errores de escritura porque cada servicio que se haga. Es decir, se evita que haya duplicidades en los servicios realizados y se garantiza que no vaya a haber errores de escritura, porque la información va a estar almacenada en entidades independientes y siempre va a ser iguales, al menos que se modifique directamente. 
+
+Como se puede notar, "City" y "Branch" están separadas del cliente, porque se estima que mismo cliente puede estar en diferentes ciudades, además de que en una misma ciudad puede tener diferentes sucursales. 
+
+Otra consideración importante son las entidades "Service" y "Service Detail". Se decide crear estas dos entidades para facilitar las futuras consultas que se puedan hacer. Si bien, toda la información de un servicio se puede almacenar en una misma entidad, tendría problemas con la duplicidad. Pues, por cada resgrito, se debería colocar el id del cliente y el id del técnico, resultado en muchos registros que van a tener duplicidades con estos pero con equipos y tipos servicios difentes. Por lo tanto, se considera que es mejor tener una entidad llamada "Service" que va a vincular al cliente y al técnico, así como también la fecha del servicio, y otra entidad que va a almacenar los detalles del servicio y que va a estar vinvulada a un servicio en particular. Es decir, un servicio va a tener varios detalles, pero los detalles de servicio va a estar relaciona solamante a un servicio en particular. 
+
+## Modelo Entidad Relación
+ Entities | PK | Attributes | PF 
+ --- | --- | --- | --- 
+ city | id | name		|			
+branch  |	id  |	name    |
+client  |    id  |	name    -   tel |
+client_site |   id  |     |   id_client -   id_city -   id_branch
+technician  |   id  |   name	lastname	tel 
+equipment_category  |   id  |   name					
+equipment   |   id  |   name    |   id_equipment_category		
+service_type    |   id  |   name					
+service |   id  |   service_date    |   id_client	id_technician	
+service_detail  |   id  |   hours   -   cost    |   id_equipment    -   id_service_type -   id_service
+
+Imagen
+
+## SCRIPT
+    -- Delete tables
+    DROP TABLE IF EXISTS riwi_service_detail;
+    DROP TABLE IF EXISTS riwi_service;
+
+    DROP TABLE IF EXISTS riwi_client_site;
+    DROP TABLE IF EXISTS riwi_city;
+    DROP TABLE IF EXISTS riwi_branch;
+    DROP TABLE IF EXISTS riwi_client;
+
+    DROP TABLE IF EXISTS riwi_technician;
+    DROP TABLE IF EXISTS riwi_equipment;
+    DROP TABLE IF EXISTS riwi_equipment_category;
+
+    DROP TABLE IF EXISTS riwi_service_type;
+
+    -- Create tables
+    CREATE TABLE riwi_city (
+        riwi_id	SERIAL PRIMARY KEY,
+        riwi_name VARCHAR(255) NOT NULL UNIQUE,
+        create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        update_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+
+    CREATE TABLE riwi_branch (
+        riwi_id	SERIAL PRIMARY KEY,
+        riwi_name VARCHAR(255) NOT NULL UNIQUE,
+        create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        update_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+
+    CREATE TABLE riwi_client (
+        riwi_id	SERIAL PRIMARY KEY,
+        riwi_name VARCHAR(255) NOT NULL UNIQUE,
+        riwi_tel VARCHAR(100) NOT NULL UNIQUE,
+        create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        update_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+
+    CREATE TABLE riwi_client_site (
+        riwi_id	SERIAL PRIMARY KEY,
+        riwi_id_client INT NOT NULL,
+        riwi_id_city INT NOT NULL,
+        riwi_id_branch INT NOT NULL,
+        create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        update_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+        CONSTRAINT fk_client
+            FOREIGN KEY (riwi_id_client)
+            REFERENCES riwi_client(riwi_id),
+
+        CONSTRAINT fk_city
+            FOREIGN KEY (riwi_id_city)
+            REFERENCES riwi_city(riwi_id),
+
+        CONSTRAINT fk_branch
+            FOREIGN KEY (riwi_id_branch)
+            REFERENCES riwi_branch(riwi_id)
+    );
+
+    CREATE TABLE riwi_technician (
+        riwi_id	SERIAL PRIMARY KEY,
+        riwi_name VARCHAR(255) NOT NULL,
+        riwi_lastname VARCHAR(255) NOT NULL,
+        riwi_tel VARCHAR(100) NOT NULL UNIQUE,
+        create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        update_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+
+    CREATE TABLE riwi_equipment_category (
+        riwi_id	SERIAL PRIMARY KEY,
+        riwi_name VARCHAR(255) NOT NULL UNIQUE,
+        create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        update_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+
+    CREATE TABLE riwi_equipment (
+        riwi_id	SERIAL PRIMARY KEY,
+        riwi_name VARCHAR(255) NOT NULL UNIQUE,
+        riwi_id_equipment_category INT NOT NULL,
+        create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        update_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+        CONSTRAINT fk_equipment_category
+            FOREIGN KEY (riwi_id_equipment_category)
+            REFERENCES riwi_equipment_category(riwi_id)
+    );
+
+    CREATE TABLE riwi_service_type (
+        riwi_id	SERIAL PRIMARY KEY,
+        riwi_name VARCHAR(255) NOT NULL UNIQUE,
+        create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        update_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+
+    -- 			riwi_id_client	riwi_id_tecnician
+    CREATE TABLE riwi_service (
+        riwi_id	SERIAL PRIMARY KEY,
+        riwi_service_date DATE NOT NULL,
+        riwi_id_client INT NOT NULL,
+        riwi_id_technician INT NOT NULL,
+        create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        update_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+        CONSTRAINT fk_client
+            FOREIGN KEY (riwi_id_client)
+            REFERENCES riwi_client(riwi_id),
+
+        CONSTRAINT fk_technician
+            FOREIGN KEY (riwi_id_technician)
+            REFERENCES riwi_technician(riwi_id)
+    );
+
+    CREATE TABLE riwi_service_detail (
+        riwi_id	SERIAL PRIMARY KEY,
+        riwi_hours TIME NOT NULL,
+        riwi_cost DECIMAL NOT NULL,
+        riwi_id_equipment INT NOT NULL,
+        riwi_id_service_type INT NOT NULL,
+        riwi_id_service INT NOT NULL,
+        create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        update_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+        CONSTRAINT fk_equipment
+            FOREIGN KEY (riwi_id_equipment)
+            REFERENCES riwi_equipment(riwi_id),
+
+        CONSTRAINT fk_service_type
+            FOREIGN KEY (riwi_id_service_type)
+            REFERENCES riwi_service_type(riwi_id),
+
+        CONSTRAINT fk_service
+            FOREIGN KEY (riwi_id_service)
+            REFERENCES riwi_service(riwi_id)
+    );
+
+    -- Insertion
+    INSERT INTO riwi_city (riwi_name) VALUES ('bogota');
+    INSERT INTO riwi_branch (riwi_name) VALUES ('north office');
+    INSERT INTO riwi_client (riwi_name, riwi_tel) VALUES ('acme ltda', '3008837654');
+    INSERT INTO riwi_client_site (riwi_id_client,riwi_id_city,riwi_id_branch) VALUES (1,1,1);
+
+    INSERT INTO riwi_equipment_category (riwi_name) VALUES ('laptop');
+    INSERT INTO riwi_equipment (riwi_name, riwi_id_equipment_category) VALUES ('dell latitude 5420', 1);
+
+    INSERT INTO riwi_technician (riwi_name, riwi_lastname, riwi_tel) VALUES ('jayzir', 'martinez', '3008837654');
+
+    INSERT INTO riwi_service (riwi_service_date, riwi_id_client, riwi_id_technician) VALUES ('2026-07-06', 1, 1);
+
+    INSERT INTO riwi_service_type (riwi_name) VALUES ('preventive maintenance');
+
+    INSERT INTO riwi_service_detail (riwi_hours,riwi_cost,riwi_id_equipment,riwi_id_service_type,riwi_id_service) VALUES ('02:00:00', 120, 1, 1, 1);
+
+    -- Update
+    UPDATE riwi_technician SET riwi_name = 'slaider' WHERE riwi_id = 1;
+
+    -- Delete
+    /*DELETE FROM riwi_service_detail WHERE riwi_id = 1;
+
+    SELECT * FROM riwi_service_detail;*/
+
+    -- Queries
+    SELECT 
+        *
+        FROM riwi_service
+        
+            WHERE riwi_id_technician = 1;
+
+    SELECT
+        riwi_client_site.riwi_id AS "ID",
+        riwi_client.riwi_name AS "Client Name",
+        riwi_city.riwi_name AS "Client City",
+        riwi_branch.riwi_name AS "Client Branch"	
+        
+        FROM riwi_client_site
+        
+            INNER JOIN riwi_client ON riwi_client_site.riwi_id_client = riwi_client.riwi_id
+            INNER JOIN riwi_city ON riwi_client_site.riwi_id_city = riwi_city.riwi_id
+            INNER JOIN riwi_branch ON riwi_client_site.riwi_id_branch = riwi_branch.riwi_id
+    ;
