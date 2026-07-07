@@ -1,0 +1,52 @@
+// ==========================================
+// 1. Collection users
+// ==========================================
+{
+  "_id": ObjectId("..."),           // Identificador único nativo de MongoDB
+  "name_lastname": "text",         // Nombre y apellido del usuario
+  "email": "text",   // Email único de acceso
+  "my_list": [                    // Arreglo de referencias (IDs de contenidos guardados)
+    "MOVIE01", 
+    "SERIE01"
+  ],
+  "viewing_history": [             // Documento anidado: Historial de reproducciones
+    {
+      "id_content": "Texto",     // ID del contenido visualizado
+      "progreso_minutos": 0        // Minutos reproducidos (Número)
+    }
+  ]
+}
+
+// ==========================================
+// 2. Collection: Content (Combines Movies and Series)
+// ==========================================
+{
+  "_id": "Texto_O_ObjectId",       // ID único del contenido
+  "title": "text",               // Nombre de la película o serie
+  "type": "text",                 // Define la estructura: "pelicula" o "serie"
+  "kind": ["text"],            // Arreglo de géneros (ej. ["Acción", "Sci-Fi"])
+  "duration_total_min": 0,         // Atributo exclusivo para películas (Número)
+  "season": [                  // Arreglo anidado exclusivo para series
+    {
+      "number_season": 1,       // Número de la temporada
+      "episodes": [               // Arreglo de objetos para los episodios
+        {
+          "number_episode": 1,    // Número del capítulo
+          "title": "text",       // Nombre del capítulo
+          "duration_min": 0    // Duración en minutos (Número)
+        }
+      ]
+    }
+  ]
+}
+
+// ==========================================
+// 3. Collection: ratings
+// ==========================================
+{
+  "_id": ObjectId("..."),           // ID único de la reseña
+  "id_content": "text",         // Referencia al ID del contenido calificado
+  "id_user": ObjectId("..."),    // Referencia al ID del usuario que califica
+  "punctuation": 5,                 // Calificación numérica del 1 al 5
+  "comment": "Texto",           // Reseña escrita por el usuario
+}
