@@ -12,7 +12,7 @@
   "viewing_history": [             // Documento anidado: Historial de reproducciones
     {
       "id_content": "Texto",     // ID del contenido visualizado
-      "progreso_minutos": 0        // Minutos reproducidos (Número)
+      "proccess_min": 0        // Minutos reproducidos (Número)
     }
   ]
 }

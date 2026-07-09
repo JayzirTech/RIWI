@@ -1,0 +1,172 @@
+// Insert Users
+db.users.insertMany(
+  [
+    {
+        "name_lastname": "Carlos Mendoza",
+        "email": "carlos.mendoza@email.com",
+        "my_list": [],
+        "viewing_history": []
+      },
+      {
+        "name_lastname": "Ana Gómez",
+        "email": "ana.gomez@email.com",
+        "my_list": [],
+        "viewing_history": []
+      },
+      {
+        "name_lastname": "Luis Martínez",
+        "email": "luis.mtz@email.com",
+        "my_list": [],
+        "viewing_history": []
+      },
+      {
+        "name_lastname": "Elena Rostova",
+        "email": "elena.ros@email.com",
+        "my_list": [],
+        "viewing_history": []
+      },
+      {
+        "name_lastname": "Sofía Castro",
+        "email": "sofia.castro@email.com",
+        "my_list": [],
+        "viewing_history": []
+      }
+  ]
+)
+
+
+
+// Insert Content
+db.content.insertMany(
+  [
+    {
+    "title": "Interestelar",
+    "type": "movie",
+    "kind": ["Sci-Fi", "Drama", "Aventura"],
+    "duration_total_min": 169
+  },
+  {
+    "title": "Stranger Things",
+    "type": "serie",
+    "kind": ["Sci-Fi", "Terror", "Drama"],
+    "season": [
+      {
+        "number_season": 1,
+        "episodes": [
+          { "number_episode": 1, "title": "La desaparición de Will Byers", "duration_min": 47 },
+          { "number_episode": 2, "title": "La loca de la calle Maple", "duration_min": 55 }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Batman: El Caballero de la Noche",
+    "type": "movie",
+    "kind": ["Acción", "Crimen", "Drama"],
+    "duration_total_min": 152
+  },
+  {
+    "title": "Breaking Bad",
+    "type": "serie",
+    "kind": ["Crimen", "Drama", "Suspenso"],
+    "season": [
+      {
+        "number_season": 1,
+        "episodes": [
+          { "number_episode": 1, "title": "Piloto", "duration_min": 58 },
+          { "number_episode": 2, "title": "El gato en la bolsa...", "duration_min": 48 }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "El Origen",
+    "type": "movie",
+    "kind": ["Acción", "Sci-Fi", "Suspenso"],
+    "duration_total_min": 148
+  }
+  ]
+)
+
+
+
+// Insert ratings
+db.ratings.insertMany(
+
+  [
+
+    {
+
+    "id_content": "6a4d374428472a2ebe57ce12",
+
+    "id_user": "6a4d354b28472a2ebe57ce0d",
+
+    "punctuation": 5,
+
+    "comment": "Una obra maestra de la ciencia ficción. La banda sonora es increíble."
+
+  },
+
+  {
+
+    "id_content": "6a4d374428472a2ebe57ce13",
+
+    "id_user": "6a4d354b28472a2ebe57ce0d",
+
+    "punctuation": 4,
+
+    "comment": "Muy nostálgica y entretenida. Los niños actúan excelente."
+
+  },
+
+  {
+
+    "id_content": "6a4d374428472a2ebe57ce13",
+
+    "id_user": "6a4d354b28472a2ebe57ce0f",
+
+    "punctuation": 5,
+
+    "comment": "La mejor película de superhéroes de la historia. Heath Ledger es insuperable."
+
+  },
+
+  {
+
+    "id_content": "6a4d374428472a2ebe57ce15",
+
+    "id_user": "6a4d354b28472a2ebe57ce0f",
+
+    "punctuation": 5,
+
+    "comment": "Desarrollo de personajes perfecto de principio a fin."
+
+  },
+
+  {
+
+    "id_content": "6a4d374428472a2ebe57ce15",
+
+    "id_user": "6a4d3b3528472a2ebe57ce1c",
+
+    "punctuation": 3,
+
+    "comment": "Visualmente es asombrosa, pero la trama se vuelve un poco confusa al final."
+
+  }
+
+  ]
+
+)
+
+
+
+// Insert One
+db.users.insertOne(
+  {
+    "name_lastname": "Jayzir Martinez",
+    "email": "jayzir.martinez@email.com",
+    "my_list": ["6a4d374428472a2ebe57ce12","6a4d374428472a2ebe57ce13"],
+    "viewing_history": {"id_content": "6a4d374428472a2ebe57ce12", "progress_min": 50}
+  }
+)
