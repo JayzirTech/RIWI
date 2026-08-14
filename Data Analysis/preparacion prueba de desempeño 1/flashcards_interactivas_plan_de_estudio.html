@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcards Interactivas: Plan de Estudio (10 Días) - Analítica de Datos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+        .transform-style-3d {
+            transform-style: preserve-3d;
+        }
+        .backface-hidden {
+            backface-visibility: hidden;
+        }
+        .rotate-y-180 {
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between">
+
+    <header class="bg-indigo-950/90 backdrop-blur-md border-b border-indigo-800/50 sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="bg-indigo-600 text-white p-2.5 rounded-xl shadow-lg shadow-indigo-500/30">
+                    <i class="fa-solid fa-brain text-lg"></i>
+                </div>
+                <div>
+                    <h1 class="text-base font-bold tracking-tight text-white">Flashcards: Analítica de Datos (10 Días)</h1>
+                    <p class="text-xs text-indigo-300">Repaso Activo & Autoevaluación RIWI + Módulos TL</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-2 text-xs">
+                <span id="scoreBadge" class="bg-indigo-900/80 border border-indigo-700/60 px-3 py-1.5 rounded-lg text-indigo-200 font-medium">
+                    Tarjeta <span id="currentIndex" class="font-bold text-white">1</span> de <span id="totalCards" class="font-bold text-white">25</span>
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-1 max-w-3xl w-full mx-auto px-4 py-8 flex flex-col justify-center items-center space-y-6">
+
+        <!-- Progress Bar -->
+        <div class="w-full bg-slate-800 rounded-full h-2.5 overflow-hidden border border-slate-700/50">
+            <div id="progressBar" class="bg-gradient-to-r from-indigo-500 to-teal-400 h-2.5 rounded-full transition-all duration-300" style="width: 4%;"></div>
+        </div>
+
+        <!-- Flashcard Viewport -->
+        <div class="w-full perspective-1000 h-80 sm:h-96 cursor-pointer" id="cardContainer" onclick="toggleFlip()">
+            <div id="cardInner" class="relative w-full h-full duration-500 transform-style-3d shadow-2xl rounded-2xl">
+                
+                <!-- Front Side -->
+                <div class="absolute inset-0 w-full h-full bg-gradient-to-br from-slate-800 to-indigo-950 border border-indigo-500/40 rounded-2xl p-6 sm:p-8 flex flex-col justify-between backface-hidden shadow-xl">
+                    <div class="flex justify-between items-center">
+                        <span class="px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 uppercase tracking-wider">Concepto Clave</span>
+                        <span class="text-xs text-slate-400"><i class="fa-solid fa-rotate mr-1.5"></i> Click para voltear</span>
+                    </div>
+                    <div class="my-auto text-center">
+                        <h2 id="cardFrontText" class="text-xl sm:text-2xl font-extrabold text-white leading-snug">Cargando tarjeta...</h2>
+                    </div>
+                    <div class="bg-indigo-950/60 border border-indigo-800/40 p-3 rounded-xl text-xs text-indigo-200 text-center">
+                        <strong class="text-amber-400">Pista:</strong> <span id="cardHintText">Piensa en el concepto...</span>
+                    </div>
+                </div>
+
+                <!-- Back Side -->
+                <div class="absolute inset-0 w-full h-full bg-gradient-to-br from-indigo-950 to-teal-950 border border-teal-500/40 rounded-2xl p-6 sm:p-8 flex flex-col justify-between backface-hidden rotate-y-180 shadow-xl">
+                    <div class="flex justify-between items-center">
+                        <span class="px-3 py-1 rounded-full text-xs font-semibold bg-teal-500/20 text-teal-300 border border-teal-500/30 uppercase tracking-wider">Definición / Respuesta</span>
+                        <span class="text-xs text-teal-400"><i class="fa-solid fa-check mr-1.5"></i> Respuesta Oficial</span>
+                    </div>
+                    <div class="my-auto text-center">
+                        <p id="cardBackText" class="text-base sm:text-lg font-medium text-slate-100 leading-relaxed">...</p>
+                    </div>
+                    <div class="text-center text-xs text-slate-400">
+                        Usa los botones inferiores para registrar tu avance
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Action Controls -->
+        <div class="w-full flex flex-col sm:flex-row justify-between items-center gap-3">
+            <button onclick="prevCard()" class="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700/80 text-sm font-semibold transition flex items-center justify-center space-x-2">
+                <i class="fa-solid fa-arrow-left"></i>
+                <span>Anterior</span>
+            </button>
+
+            <div class="flex gap-3 w-full sm:w-auto">
+                <button onclick="markCard(false)" class="flex-1 sm:flex-initial px-5 py-2.5 rounded-xl bg-rose-950/60 hover:bg-rose-900/80 text-rose-300 border border-rose-800/60 text-sm font-semibold transition flex items-center justify-center space-x-2">
+                    <i class="fa-solid fa-xmark"></i>
+                    <span>Repasar más</span>
+                </button>
+                <button onclick="markCard(true)" class="flex-1 sm:flex-initial px-5 py-2.5 rounded-xl bg-teal-950/60 hover:bg-teal-900/80 text-teal-300 border border-teal-800/60 text-sm font-semibold transition flex items-center justify-center space-x-2">
+                    <i class="fa-solid fa-check"></i>
+                    <span>¡Dominado!</span>
+                </button>
+            </div>
+
+            <button onclick="nextCard()" class="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold transition flex items-center justify-center space-x-2 shadow-lg shadow-indigo-600/30">
+                <span>Siguiente</span>
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+
+        <!-- Summary Stats Card -->
+        <div class="w-full bg-slate-800/80 border border-slate-700/60 p-4 rounded-xl flex justify-around text-center text-xs sm:text-sm">
+            <div>
+                <div class="text-slate-400 uppercase font-bold text-[10px]">Dominadas</div>
+                <div id="domindasCount" class="text-teal-400 font-extrabold text-lg">0</div>
+            </div>
+            <div class="border-r border-slate-700"></div>
+            <div>
+                <div class="text-slate-400 uppercase font-bold text-[10px]">Por Repasar</div>
+                <div id="repasarCount" class="text-rose-400 font-extrabold text-lg">25</div>
+            </div>
+            <div class="border-r border-slate-700"></div>
+            <div>
+                <div class="text-slate-400 uppercase font-bold text-[10px]">Progreso General</div>
+                <div id="porcentajeCount" class="text-indigo-400 font-extrabold text-lg">0%</div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="bg-slate-950 border-t border-slate-800 py-4 px-4 text-center text-xs text-slate-500">
+        <p>Flashcards Interactivas SPA - Plan de Estudio (10 Días) Analítica de Datos</p>
+    </footer>
+
+    <script>
+        const flashcardsData = [
+            {
+                front: "OLTP (Online Transaction Processing)",
+                back: "Sistema de procesamiento transaccional en tiempo real, optimizado para operaciones rápidas de escritura y lectura fila por fila en bases de datos normalizadas.",
+                hint: "Piensa en bases de datos para registros de ventas inmediatas."
+            },
+            {
+                front: "OLAP (Online Analytical Processing)",
+                back: "Sistema de procesamiento analítico orientado a la realización de consultas complejas y agregaciones sobre grandes volúmenes de datos desnormalizados.",
+                hint: "Utilizado principalmente en Data Warehouses."
+            },
+            {
+                front: "Esquema en Estrella (Star Schema)",
+                back: "Modelo dimensional donde una tabla de hechos central se conecta directamente a múltiples tablas de dimensiones desnormalizadas.",
+                hint: "Modelo simple y de alto rendimiento en Data Warehouses."
+            },
+            {
+                front: "Esquema en Copo de Nieve (Snowflake Schema)",
+                back: "Variante del esquema en estrella donde algunas tablas de dimensiones se encuentran normalizadas en múltiples tablas secundarias.",
+                hint: "Ahorra espacio de almacenamiento reduciendo redundancia."
+            },
+            {
+                front: "Tabla de Hechos (Fact Table)",
+                back: "Tabla central en un modelo dimensional que almacena métricas numéricas cuantitativas y las claves foráneas hacia las tablas de dimensiones.",
+                hint: "Contiene las métricas del negocio como total gastado o cantidad."
+            },
+            {
+                front: "Tabla de Dimensiones (Dimension Table)",
+                back: "Tabla que almacena atributos cualitativos y descriptivos que aportan contexto a las métricas contenidas en la tabla de hechos.",
+                hint: "Contiene el quién, dónde, cuándo o qué del negocio."
+            },
+            {
+                front: "Diferencia principal entre WHERE y HAVING en SQL",
+                back: "WHERE filtra filas individuales antes de realizar agrupaciones, mientras que HAVING filtra los grupos resultantes creados por la cláusula GROUP BY.",
+                hint: "Uno actúa sobre filas sueltas y el otro sobre agregaciones."
+            },
+            {
+                front: "CTE (Common Table Expression) en SQL",
+                back: "Conjunto de resultados temporal definido con la cláusula WITH, utilizado para simplificar consultas complejas y mejorar la legibilidad del código.",
+                hint: "Permite crear una subconsulta nombrada antes del SELECT principal."
+            },
+            {
+                front: "Fórmula de imputación algebraica para precio unitario",
+                back: "precio_unitario = total_gastado / cantidad",
+                hint: "División del monto total entre el volumen comprado."
+            },
+            {
+                front: "Imputación algebraica recíproca",
+                back: "Técnica de limpieza de datos que reconstruye valores nulos mediante ecuaciones matemáticas interrelacionadas entre columnas dependientes.",
+                hint: "Calcular una variable faltante en función de otras dos conocidas."
+            },
+            {
+                front: "Método .loc[] frente a .iloc[] en Pandas",
+                back: ".loc[] selecciona datos mediante etiquetas de filas y columnas, mientras que .iloc[] selecciona datos por sus posiciones numéricas absolutas de índice.",
+                hint: "Uno usa nombres/etiquetas y el otro enteros de posición."
+            },
+            {
+                front: "Estandarización de nombres de columnas en Pandas",
+                back: "df.columns = df.columns.str.strip().str.lower().str.replace(' ', '_')",
+                hint: "Elimina espacios externos, pasa a minúsculas y sustituye espacios por guiones bajos."
+            },
+            {
+                front: "Gráfico de doble eje Y en Matplotlib (twinx)",
+                back: "Técnica de visualización que permite comparar dos series de datos con diferentes unidades o escalas en un mismo gráfico mediante un segundo eje vertical.",
+                hint: "Útil para comparar ingresos en dólares vs. unidades vendidas."
+            },
+            {
+                front: "Eliminación de desorden visual (Clutter)",
+                back: "Principio de storytelling que busca remover elementos decorativos no esenciales (bordes excesivos, cuadrículas redundantes) para resaltar la información clave.",
+                hint: "Menos es más al momento de comunicar datos."
+            },
+            {
+                front: "Estructura narrativa analítica de Storytelling",
+                back: "Secuencia comunicativa dividida en Situación (contexto), Complicación (el problema u oportunidad hallado) y Resolución (la recomendación respaldada por datos).",
+                hint: "Contexto, Problema y Solución."
+            },
+            {
+                front: "Diferencia entre Columna Calculada y Medida en DAX",
+                back: "La columna calculada consume memoria al almacenarse fila a fila en el modelo; la medida se evalúa dinámicamente según el contexto de filtro en la visualización.",
+                hint: "Una ocupa espacio en disco/RAM y la otra se calcula en tiempo real."
+            },
+            {
+                front: "Función CALCULATE en DAX",
+                back: "Función fundamental que evalúa una expresión modificando o reemplazando el contexto de filtro actual de la consulta.",
+                hint: "Es la función más poderosa de DAX para aplicar filtros condicionales."
+            },
+            {
+                front: "KPI (Key Performance Indicator)",
+                back: "Métrica cuantitativa utilizada para medir el nivel de rendimiento de un proceso continuo o meta operativa dentro de la organización.",
+                hint: "Mide cómo va un proceso recurrente, como la tasa de conversión."
+            },
+            {
+                front: "OKR (Objectives and Key Results)",
+                back: "Marco de trabajo estratégico que define un objetivo ambicioso e inspirador junto con resultados clave cuantitativos acotados en el tiempo.",
+                hint: "Combina una meta cualitativa con métricas temporales de éxito."
+            },
+            {
+                front: "Media frente a Mediana ante la presencia de Outliers",
+                back: "La mediana es una medida de tendencia central más robusta ante valores extremos (outliers) porque no se ve sesgada por datos atípicos como la media.",
+                hint: "Métrica preferida cuando los datos tienen distribuciones asimétricas."
+            },
+            {
+                front: "Desviación Estándar",
+                back: "Medida de dispersión estadística que indica qué tan alejados o dispersos se encuentran los valores numéricos respecto a la media de la distribución.",
+                hint: "Indica la variabilidad promedio de los datos."
+            },
+            {
+                front: "Analítica Descriptiva vs. Analítica Prescriptiva",
+                back: "La analítica descriptiva responde a ¿qué pasó? examinando datos históricos, mientras que la prescriptiva responde a ¿qué debemos hacer? recomendando acciones.",
+                hint: "Una mira el pasado y la otra recomienda decisiones futuras."
+            },
+            {
+                front: "Churn Rate (Tasa de Cancelación)",
+                back: "Métrica de negocio que representa el porcentaje de clientes o suscriptores que dejan de consumir un servicio o producto en un periodo determinado.",
+                hint: "Porcentaje de clientes perdidos."
+            },
+            {
+                front: "Orden lógico de ejecución de una consulta SQL",
+                back: "FROM -> WHERE -> GROUP BY -> HAVING -> SELECT -> ORDER BY",
+                hint: "SQL procesa primero la fuente de datos antes de filtrar, agrupar o seleccionar."
+            },
+            {
+                front: "Distribución de Frecuencias",
+                back: "Organización de un conjunto de datos en intervalos de clase mostrando la cantidad o porcentaje de observaciones agrupadas en cada rango.",
+                hint: "Muestra cuántas veces ocurre un valor en cada intervalo."
+            }
+        ];
+
+        let currentIndex = 0;
+        let isFlipped = false;
+        let masteredCards = new Set();
+
+        const cardInner = document.getElementById('cardInner');
+        const cardFrontText = document.getElementById('cardFrontText');
+        const cardBackText = document.getElementById('cardBackText');
+        const cardHintText = document.getElementById('cardHintText');
+        const currentIndexSpan = document.getElementById('currentIndex');
+        const totalCardsSpan = document.getElementById('totalCards');
+        const progressBar = document.getElementById('progressBar');
+        const domindasCount = document.getElementById('domindasCount');
+        const repasarCount = document.getElementById('repasarCount');
+        const porcentajeCount = document.getElementById('porcentajeCount');
+
+        totalCardsSpan.textContent = flashcardsData.length;
+
+        function updateCard() {
+            const card = flashcardsData[currentIndex];
+            cardFrontText.textContent = card.front;
+            cardBackText.textContent = card.back;
+            cardHintText.textContent = card.hint;
+            currentIndexSpan.textContent = currentIndex + 1;
+            
+            // Update Progress Bar
+            const progress = ((currentIndex + 1) / flashcardsData.length) * 100;
+            progressBar.style.width = progress + '%';
+
+            // Reset flip state if needed
+            if (isFlipped) {
+                toggleFlip();
+            }
+
+            updateStats();
+        }
+
+        function toggleFlip() {
+            isFlipped = !isFlipped;
+            if (isFlipped) {
+                cardInner.style.transform = 'rotateY(180deg)';
+            } else {
+                cardInner.style.transform = 'rotateY(0deg)';
+            }
+        }
+
+        function nextCard() {
+            currentIndex = (currentIndex + 1) % flashcardsData.length;
+            updateCard();
+        }
+
+        function prevCard() {
+            currentIndex = (currentIndex - 1 + flashcardsData.length) % flashcardsData.length;
+            updateCard();
+        }
+
+        function markCard(mastered) {
+            if (mastered) {
+                masteredCards.add(currentIndex);
+            } else {
+                masteredCards.delete(currentIndex);
+            }
+            updateStats();
+            nextCard();
+        }
+
+        function updateStats() {
+            const mastered = masteredCards.size;
+            const remaining = flashcardsData.length - mastered;
+            const percentage = Math.round((mastered / flashcardsData.length) * 100);
+
+            domindasCount.textContent = mastered;
+            repasarCount.textContent = remaining;
+            porcentajeCount.textContent = percentage + '%';
+        }
+
+        // Initialize first card
+        updateCard();
+    </script>
+</body>
+</html>

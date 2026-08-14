@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <!-- COLOR PALETTE: Energetic Tech & Slate (Primary: #312E81, Accent: #2563EB, Secondary: #0D9488, Highlight: #D97706) -->
+    <!-- NO SVG / NO MERMAID CONFIRMATION: Confirmed that neither SVG graphics nor Mermaid JS were used in this output. Visualizations rely purely on Chart.js (Canvas API) and HTML/Tailwind CSS components. -->
+    <!-- NARRATIVE & STRUCTURE PLAN:
+         Section 1: Executive Overview & Core KPIs
+         Section 2: The 10-Day Road Map & Time Allocation (Stacked Bar & Doughnut Chart)
+         Section 3: Curriculum Mastery & Skill Targets (Horizontal Bar Chart)
+         Section 4: Technical Execution Pipeline & Data Flow (HTML/Tailwind Flowchart)
+         Section 5: Daily Skill Progression & Confidence Curve (Line Chart)
+         Section 6: Formulas, SQL Order & Strategic Exam Key Rules
+    -->
+    <!-- VISUALIZATION CHOICES JUSTIFICATION:
+         1. Doughnut Chart: Time distribution across domains (Inform/Compare composition).
+         2. Horizontal Bar Chart: Target vs Baseline mastery across 8 topics (Compare categories).
+         3. Line Chart: Cumulative skill confidence over 10 days (Change over time).
+         4. Stacked Bar Chart: Daily breakdown of Theory vs Practice hours (Composition within temporal categories).
+         5. Process Diagram: Structured HTML/Tailwind boxes and flex/grid layouts with CSS arrows to replace flowcharts without SVG or Mermaid.
+    -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografía Interactiva: Plan de Estudio Intensivo (10 Días) - Analítica de Datos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 360px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-100 font-sans antialiased min-h-screen flex flex-col">
+
+    <!-- Header / Sticky Navigation -->
+    <header class="bg-indigo-950/90 backdrop-blur-md border-b border-indigo-800/50 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex flex-col md:flex-row justify-between items-center gap-3">
+            <div class="flex items-center space-x-3">
+                <div class="bg-indigo-600 text-white p-2.5 rounded-xl shadow-lg shadow-indigo-500/30">
+                    <i class="fa-solid fa-graduation-cap text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-lg font-bold tracking-tight text-white">Plan de Estudio 10 Días: Analítica de Datos</h1>
+                    <p class="text-xs text-indigo-300">Rúbrica Oficial RIWI + Módulos Avanzados Team Leader</p>
+                </div>
+            </div>
+            
+            <nav class="flex flex-wrap justify-center gap-1.5 text-xs font-medium">
+                <a href="#kpis" class="px-3 py-1.5 rounded-lg bg-indigo-900/60 hover:bg-indigo-700 text-indigo-200 transition">KPIs</a>
+                <a href="#distribucion" class="px-3 py-1.5 rounded-lg bg-indigo-900/60 hover:bg-indigo-700 text-indigo-200 transition">Distribución</a>
+                <a href="#dominio" class="px-3 py-1.5 rounded-lg bg-indigo-900/60 hover:bg-indigo-700 text-indigo-200 transition">Nivel Objetivo</a>
+                <a href="#pipeline" class="px-3 py-1.5 rounded-lg bg-indigo-900/60 hover:bg-indigo-700 text-indigo-200 transition">Flujo de Trabajo</a>
+                <a href="#progreso" class="px-3 py-1.5 rounded-lg bg-indigo-900/60 hover:bg-indigo-700 text-indigo-200 transition">Curva Aprendizaje</a>
+                <a href="#formulas" class="px-3 py-1.5 rounded-lg bg-indigo-900/60 hover:bg-indigo-700 text-indigo-200 transition">Reglas Clave</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-8 space-y-12">
+
+        <!-- SECTION 1: HERO & CORE KPIS -->
+        <section id="kpis" class="space-y-6">
+            <div class="bg-gradient-to-r from-indigo-900/80 via-slate-800 to-indigo-950 p-6 sm:p-8 rounded-2xl border border-indigo-700/40 shadow-2xl">
+                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 uppercase tracking-wider">Estrategia Intensiva</span>
+                <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-3 mb-2">Preparación de Desempeño End-to-End</h2>
+                <p class="text-sm sm:text-base text-slate-300 leading-relaxed max-w-3xl">
+                    Este plan estructurado de 10 días combina la alineación con la rúbrica oficial RIWI y temas avanzados del Team Leader (Power BI, DAX, PostgreSQL y OKRs). Maximiza la retención mediante la combinación diaria de teoría rigurosa y aplicación práctica.
+                </p>
+            </div>
+
+            <!-- KPI Cards Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="bg-slate-800/80 border border-slate-700/60 p-5 rounded-xl text-center shadow-lg hover:border-indigo-500 transition">
+                    <div class="text-indigo-400 text-xs uppercase font-bold tracking-wider mb-1">Duración Total</div>
+                    <div class="text-3xl sm:text-4xl font-extrabold text-white">10 <span class="text-lg text-indigo-400">Días</span></div>
+                    <p class="text-xs text-slate-400 mt-2">Dedicación continua y simulacro integrador</p>
+                </div>
+
+                <div class="bg-slate-800/80 border border-slate-700/60 p-5 rounded-xl text-center shadow-lg hover:border-blue-500 transition">
+                    <div class="text-blue-400 text-xs uppercase font-bold tracking-wider mb-1">Ejes Temáticos</div>
+                    <div class="text-3xl sm:text-4xl font-extrabold text-white">8 <span class="text-lg text-blue-400">Módulos</span></div>
+                    <p class="text-xs text-slate-400 mt-2">SQL, Python, Power BI, Estadística y Negocio</p>
+                </div>
+
+                <div class="bg-slate-800/80 border border-slate-700/60 p-5 rounded-xl text-center shadow-lg hover:border-teal-500 transition">
+                    <div class="text-teal-400 text-xs uppercase font-bold tracking-wider mb-1">Horas Totales Estimadas</div>
+                    <div class="text-3xl sm:text-4xl font-extrabold text-white">40 <span class="text-lg text-teal-400">Horas</span></div>
+                    <p class="text-xs text-slate-400 mt-2">4 Horas/Día (50% Teoría, 50% Código)</p>
+                </div>
+
+                <div class="bg-slate-800/80 border border-slate-700/60 p-5 rounded-xl text-center shadow-lg hover:border-amber-500 transition">
+                    <div class="text-amber-400 text-xs uppercase font-bold tracking-wider mb-1">Proyecto Integrador</div>
+                    <div class="text-3xl sm:text-4xl font-extrabold text-white">100% <span class="text-lg text-amber-400">Práctico</span></div>
+                    <p class="text-xs text-slate-400 mt-2">Pipeline SQL ➔ Pandas ➔ Power BI</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: TIME ALLOCATION & STUDY BREAKDOWN -->
+        <section id="distribucion" class="space-y-6">
+            <div class="border-l-4 border-indigo-500 pl-4">
+                <h3 class="text-xl font-bold text-white">1. Distribución del Tiempo de Estudio y Carga Horaria</h3>
+                <p class="text-xs text-slate-400 mt-1">Análisis de la asignación temporal entre la práctica guiada y la teoría conceptual por cada uno de los 10 días.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Stacked Bar Chart Card -->
+                <div class="bg-slate-800/90 p-6 rounded-2xl border border-slate-700/80 shadow-xl flex flex-col justify-between">
+                    <div>
+                        <h4 class="text-base font-semibold text-indigo-300 mb-2">Carga Horaria Diaria: Teoría vs Práctica</h4>
+                        <p class="text-xs text-slate-400 mb-4">
+                            El plan reserva franjas intensivas de práctica de código (SQL, Pandas y DAX) a partir del Día 2, culminando en el proyecto integrador del Día 9 con 4 horas directas de manos en el código.
+                        </p>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="chartHoras"></canvas>
+                    </div>
+                </div>
+
+                <!-- Doughnut Chart Card -->
+                <div class="bg-slate-800/90 p-6 rounded-2xl border border-slate-700/80 shadow-xl flex flex-col justify-between">
+                    <div>
+                        <h4 class="text-base font-semibold text-teal-300 mb-2">Composición del Tiempo por Tecnología / Dominio</h4>
+                        <p class="text-xs text-slate-400 mb-4">
+                            Python y Pandas representan la mayor proporción del esfuerzo total (30%), seguidos equitativamente por SQL, Power BI y las bases conceptuales/negocio.
+                        </p>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="chartEcosistema"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: CURRICULUM MASTERY & SKILL TARGETS -->
+        <section id="dominio" class="space-y-6">
+            <div class="border-l-4 border-teal-500 pl-4">
+                <h3 class="text-xl font-bold text-white">2. Mapeo de Competencias y Nivel Objetivo</h3>
+                <p class="text-xs text-slate-400 mt-1">Comparativa entre el nivel inicial estimado y el dominio objetivo requerido por la prueba técnica.</p>
+            </div>
+
+            <div class="bg-slate-800/90 p-6 rounded-2xl border border-slate-700/80 shadow-xl space-y-4">
+                <div>
+                    <h4 class="text-base font-semibold text-slate-200">Brecha de Conocimiento (Línea Base vs Objetivo)</h4>
+                    <p class="text-xs text-slate-400 mt-1">
+                        Se priorizan incrementos significativos en áreas de alto peso práctico como SQL Analítico, EDA en Pandas, Visualizaciones de Doble Eje en Matplotlib y Modelado DAX en Power BI.
+                    </p>
+                </div>
+                <div class="chart-container" style="max-width: 900px; height: 380px;">
+                    <canvas id="chartDominio"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: TECHNICAL PIPELINE WORKFLOW (HTML/CSS ONLY - NO SVG/MERMAID) -->
+        <section id="pipeline" class="space-y-6">
+            <div class="border-l-4 border-amber-500 pl-4">
+                <h3 class="text-xl font-bold text-white">3. Pipeline de Trabajo y Proyecto Integrador</h3>
+                <p class="text-xs text-slate-400 mt-1">Flujo de datos end-to-end simulado en el Día 9: Extracción SQL ➔ Limpieza en Python ➔ Dashboarding y Storytelling.</p>
+            </div>
+
+            <!-- CSS Flowchart Grid -->
+            <div class="bg-slate-800/90 p-6 sm:p-8 rounded-2xl border border-slate-700/80 shadow-xl">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 relative">
+                    
+                    <!-- Step 1 -->
+                    <div class="bg-slate-900/90 p-5 rounded-xl border-t-4 border-indigo-500 border-x border-b border-slate-700/60 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-xs font-bold px-2.5 py-1 rounded bg-indigo-500/20 text-indigo-300">FASE 1</span>
+                                <i class="fa-solid fa-database text-indigo-400 text-lg"></i>
+                            </div>
+                            <h4 class="text-sm font-bold text-white mb-2">1. Extracción SQL</h4>
+                            <p class="text-xs text-slate-400 leading-relaxed">
+                                Consultas analíticas con CTEs (`WITH`), filtros condicionales (`HAVING`) y agrupamientos desnormalizados en PostgreSQL.
+                            </p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-slate-800 text-[11px] font-mono text-indigo-300">
+                            SQL Query ➔ CSV Raw
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="bg-slate-900/90 p-5 rounded-xl border-t-4 border-teal-500 border-x border-b border-slate-700/60 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-xs font-bold px-2.5 py-1 rounded bg-teal-500/20 text-teal-300">FASE 2</span>
+                                <i class="fa-brands fa-python text-teal-400 text-lg"></i>
+                            </div>
+                            <h4 class="text-sm font-bold text-white mb-2">2. Limpieza & EDA</h4>
+                            <p class="text-xs text-slate-400 leading-relaxed">
+                                Estandarización de columnas, imputación algebraica recíproca de nulos y extracción de periodos temporales en Pandas.
+                            </p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-slate-800 text-[11px] font-mono text-teal-300">
+                            Pandas ➔ Clean Dataset
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="bg-slate-900/90 p-5 rounded-xl border-t-4 border-amber-500 border-x border-b border-slate-700/60 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-xs font-bold px-2.5 py-1 rounded bg-amber-500/20 text-amber-300">FASE 3</span>
+                                <i class="fa-solid fa-chart-column text-amber-400 text-lg"></i>
+                            </div>
+                            <h4 class="text-sm font-bold text-white mb-2">3. Modelado & DAX</h4>
+                            <p class="text-xs text-slate-400 leading-relaxed">
+                                Carga en Power BI, modelo en estrella 1:N, creación de medidas calculadas dinámicas (`CALCULATE`) y filtros.
+                            </p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-slate-800 text-[11px] font-mono text-amber-300">
+                            Power BI ➔ Data Model
+                        </div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="bg-slate-900/90 p-5 rounded-xl border-t-4 border-rose-500 border-x border-b border-slate-700/60 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-xs font-bold px-2.5 py-1 rounded bg-rose-500/20 text-rose-300">FASE 4</span>
+                                <i class="fa-solid fa-bullseye text-rose-400 text-lg"></i>
+                            </div>
+                            <h4 class="text-sm font-bold text-white mb-2">4. Storytelling</h4>
+                            <p class="text-xs text-slate-400 leading-relaxed">
+                                Estructura narrativa: Situación ➔ Complicación ➔ Solución accionable. Reducción de clutter y presentación de hallazgos.
+                            </p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-slate-800 text-[11px] font-mono text-rose-300">
+                            Dashboard ➔ Insights
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: DAILY CONFIDENCE CURVE -->
+        <section id="progreso" class="space-y-6">
+            <div class="border-l-4 border-blue-500 pl-4">
+                <h3 class="text-xl font-bold text-white">4. Curva Teórica de Aprendizaje y Confianza Técnica</h3>
+                <p class="text-xs text-slate-400 mt-1">Evolución proyectada del dominio técnico diario a lo largo de los 10 días de estudio.</p>
+            </div>
+
+            <div class="bg-slate-800/90 p-6 rounded-2xl border border-slate-700/80 shadow-xl space-y-4">
+                <div>
+                    <h4 class="text-base font-semibold text-blue-300">Progreso Acumulado de Confianza (%)</h4>
+                    <p class="text-xs text-slate-400 mt-1">
+                        La confianza experimenta aceleraciones en el Día 4 (Dominio de Data Wrangling) y en el Día 9 tras consolidar el proyecto completo end-to-end.
+                    </p>
+                </div>
+                <div class="chart-container" style="max-width: 900px;">
+                    <canvas id="chartProgreso"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: FORMULAS, RULES & KEY AUDIT CHECKS -->
+        <section id="formulas" class="space-y-6">
+            <div class="border-l-4 border-purple-500 pl-4">
+                <h3 class="text-xl font-bold text-white">5. Fórmulas, Lógica SQL y Reglas de Oro</h3>
+                <p class="text-xs text-slate-400 mt-1">Resumen sintáctico y matemático esencial para evitar trampas comunes en el examen.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Card 1: SQL Order -->
+                <div class="bg-slate-800/90 p-5 rounded-2xl border border-slate-700/80 shadow-lg space-y-3">
+                    <div class="flex items-center space-x-2 text-indigo-400 font-bold text-sm">
+                        <i class="fa-solid fa-code"></i>
+                        <span>Orden Lógico SQL</span>
+                    </div>
+                    <p class="text-xs text-slate-300">Secuencia estricta de ejecución interna del motor SQL:</p>
+                    <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 text-[11px] font-mono text-indigo-300 space-y-1">
+                        <div>1. <span class="text-amber-400 font-bold">FROM</span> (Identifica tablas)</div>
+                        <div>2. <span class="text-amber-400 font-bold">WHERE</span> (Filtra registros individuales)</div>
+                        <div>3. <span class="text-amber-400 font-bold">GROUP BY</span> (Agrupa filas)</div>
+                        <div>4. <span class="text-amber-400 font-bold">HAVING</span> (Filtra agregaciones)</div>
+                        <div>5. <span class="text-amber-400 font-bold">SELECT</span> (Retorna columnas)</div>
+                        <div>6. <span class="text-amber-400 font-bold">ORDER BY</span> (Ordena resultado)</div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Math Imputation -->
+                <div class="bg-slate-800/90 p-5 rounded-2xl border border-slate-700/80 shadow-lg space-y-3">
+                    <div class="flex items-center space-x-2 text-teal-400 font-bold text-sm">
+                        <i class="fa-solid fa-calculator"></i>
+                        <span>Imputación Algebraica</span>
+                    </div>
+                    <p class="text-xs text-slate-300">Fórmulas recíprocas para completar nulos antes de eliminar filas:</p>
+                    <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 text-[11px] font-mono text-teal-300 space-y-2">
+                        <div>
+                            <span class="text-slate-400">// Precio Unitario:</span><br>
+                            precio = total_gastado / cantidad
+                        </div>
+                        <div>
+                            <span class="text-slate-400">// Total Gastado:</span><br>
+                            total = precio_unitario * cantidad
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Business & Stats Rules -->
+                <div class="bg-slate-800/90 p-5 rounded-2xl border border-slate-700/80 shadow-lg space-y-3">
+                    <div class="flex items-center space-x-2 text-amber-400 font-bold text-sm">
+                        <i class="fa-solid fa-lightbulb"></i>
+                        <span>Reglas de Oro</span>
+                    </div>
+                    <ul class="text-xs text-slate-300 space-y-2 list-disc list-inside">
+                        <li><strong class="text-white">Media vs Mediana:</strong> Usa la <em class="text-amber-300">Mediana</em> en presencia de outliers o sesgo de distribución.</li>
+                        <li><strong class="text-white">WHERE vs HAVING:</strong> <em class="text-amber-300">WHERE</em> filtra antes de agrupar; <em class="text-amber-300">HAVING</em> opera sobre valores agregados (`SUM`, `AVG`).</li>
+                        <li><strong class="text-white">DAX:</strong> Preferir <em class="text-amber-300">Medidas</em> dinámicas sobre Columnas Calculadas para optimizar memoria RAM.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 border-t border-slate-800 py-6 px-4 text-center text-xs text-slate-500">
+        <p>Infografía SPA - Plan de Estudio Intensivo (10 Días) Analítica de Datos | Preparación de Desempeño</p>
+    </footer>
+
+    <!-- JavaScript Charts & Interaction Scripts -->
+    <script>
+        // Chart.js Label Wrapping Helper Function
+        function wrapLabel(str, maxLen = 16) {
+            if (typeof str !== 'string') return str;
+            if (str.length <= maxLen) return str;
+            const words = str.split(' ');
+            const lines = [];
+            let currentLine = '';
+            words.forEach(word => {
+                if ((currentLine + ' ' + word).trim().length > maxLen) {
+                    if (currentLine) lines.push(currentLine.trim());
+                    currentLine = word;
+                } else {
+                    currentLine += (currentLine ? ' ' : '') + word;
+                }
+            });
+            if (currentLine) lines.push(currentLine.trim());
+            return lines;
+        }
+
+        // Shared Tooltip Title Callback for Wrapped Labels
+        const commonTooltipConfig = {
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        title: function(tooltipItems) {
+                            const item = tooltipItems[0];
+                            let label = item.chart.data.labels[item.dataIndex];
+                            if (Array.isArray(label)) {
+                                return label.join(' ');
+                            } else {
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        };
+
+        // 1. Stacked Bar Chart: Daily Study Hours (Teoría vs Práctica)
+        const rawDaysLabels = [
+            'Día 1: Arquitectura OLTP/OLAP',
+            'Día 2: SQL Analítico',
+            'Día 3: Python & Pandas',
+            'Día 4: EDA & Limpieza',
+            'Día 5: Visualización Matplotlib',
+            'Día 6: Storytelling',
+            'Día 7: Power BI & DAX',
+            'Día 8: KPIs & Estadística',
+            'Día 9: Proyecto Integrador',
+            'Día 10: Simulacro Técnico'
+        ];
+        const wrappedDaysLabels = rawDaysLabels.map(lbl => wrapLabel(lbl, 16));
+
+        const ctxHoras = document.getElementById('chartHoras').getContext('2d');
+        new Chart(ctxHoras, {
+            type: 'bar',
+            data: {
+                labels: wrappedDaysLabels,
+                datasets: [
+                    {
+                        label: 'Horas Teóricas',
+                        data: [2.5, 1.5, 2.0, 1.0, 1.5, 2.0, 1.5, 2.5, 0.5, 1.5],
+                        backgroundColor: '#312E81'
+                    },
+                    {
+                        label: 'Horas Prácticas',
+                        data: [1.5, 2.5, 2.0, 3.0, 2.5, 2.0, 2.5, 1.5, 3.5, 2.5],
+                        backgroundColor: '#0D9488'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        stacked: true,
+                        ticks: { color: '#94A3B8', font: { size: 10 } },
+                        grid: { color: '#334155' }
+                    },
+                    y: {
+                        stacked: true,
+                        ticks: { color: '#94A3B8' },
+                        grid: { color: '#334155' },
+                        title: { display: true, text: 'Horas Dedicadas', color: '#94A3B8' }
+                    }
+                },
+                plugins: {
+                    ...commonTooltipConfig.plugins,
+                    legend: { labels: { color: '#E2E8F0', font: { size: 11 } } }
+                }
+            }
+        });
+
+        // 2. Doughnut Chart: Time Distribution across Tech Domains
+        const rawDomainsLabels = [
+            'Python & Data Wrangling',
+            'SQL & Bases de Datos',
+            'Power BI & DAX',
+            'Visualización & Storytelling',
+            'Negocio, KPIs & Estadística',
+            'Arquitectura & Modelado'
+        ];
+        const wrappedDomainsLabels = rawDomainsLabels.map(lbl => wrapLabel(lbl, 16));
+
+        const ctxEcosistema = document.getElementById('chartEcosistema').getContext('2d');
+        new Chart(ctxEcosistema, {
+            type: 'doughnut',
+            data: {
+                labels: wrappedDomainsLabels,
+                datasets: [{
+                    data: [30, 20, 20, 15, 10, 5],
+                    backgroundColor: [
+                        '#0D9488',
+                        '#2563EB',
+                        '#D97706',
+                        '#E11D48',
+                        '#8B5CF6',
+                        '#312E81'
+                    ],
+                    borderWidth: 2,
+                    borderColor: '#1E293B'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    ...commonTooltipConfig.plugins,
+                    legend: {
+                        position: 'right',
+                        labels: { color: '#E2E8F0', font: { size: 10 } }
+                    }
+                }
+            }
+        });
+
+        // 3. Horizontal Bar Chart: Skill Mastery Target vs Baseline
+        const rawSkillsLabels = [
+            'Conceptos OLTP / OLAP',
+            'SQL Analítico & CTEs',
+            'Python & Pandas EDA',
+            'Limpieza & Imputación',
+            'Matplotlib & Eje Doble',
+            'Storytelling con Datos',
+            'Power BI, DAX & Postgres',
+            'KPIs, OKRs & Estadística'
+        ];
+        const wrappedSkillsLabels = rawSkillsLabels.map(lbl => wrapLabel(lbl, 16));
+
+        const ctxDominio = document.getElementById('chartDominio').getContext('2d');
+        new Chart(ctxDominio, {
+            type: 'bar',
+            data: {
+                labels: wrappedSkillsLabels,
+                datasets: [
+                    {
+                        label: 'Nivel Inicial Estimado',
+                        data: [40, 35, 45, 30, 25, 40, 20, 35],
+                        backgroundColor: '#475569'
+                    },
+                    {
+                        label: 'Nivel Objetivo para Examen',
+                        data: [90, 85, 90, 95, 85, 80, 75, 85],
+                        backgroundColor: '#2563EB'
+                    }
+                ]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        max: 100,
+                        ticks: { color: '#94A3B8', callback: v => v + '%' },
+                        grid: { color: '#334155' }
+                    },
+                    y: {
+                        ticks: { color: '#E2E8F0', font: { size: 11 } },
+                        grid: { color: '#334155' }
+                    }
+                },
+                plugins: {
+                    ...commonTooltipConfig.plugins,
+                    legend: { labels: { color: '#E2E8F0' } }
+                }
+            }
+        });
+
+        // 4. Line Chart: Daily Confidence Progression
+        const rawProgressDays = [
+            'Día 1', 'Día 2', 'Día 3', 'Día 4', 'Día 5',
+            'Día 6', 'Día 7', 'Día 8', 'Día 9', 'Día 10'
+        ];
+
+        const ctxProgreso = document.getElementById('chartProgreso').getContext('2d');
+        new Chart(ctxProgreso, {
+            type: 'line',
+            data: {
+                labels: rawProgressDays,
+                datasets: [{
+                    label: 'Confianza Técnica Acumulada (%)',
+                    data: [15, 30, 45, 62, 72, 78, 85, 90, 96, 100],
+                    borderColor: '#0D9488',
+                    backgroundColor: 'rgba(13, 148, 136, 0.2)',
+                    fill: true,
+                    tension: 0.3,
+                    pointBackgroundColor: '#D97706',
+                    pointRadius: 5
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        ticks: { color: '#94A3B8' },
+                        grid: { color: '#334155' }
+                    },
+                    y: {
+                        min: 0,
+                        max: 100,
+                        ticks: { color: '#94A3B8', callback: v => v + '%' },
+                        grid: { color: '#334155' }
+                    }
+                },
+                plugins: {
+                    ...commonTooltipConfig.plugins,
+                    legend: { labels: { color: '#E2E8F0' } }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
