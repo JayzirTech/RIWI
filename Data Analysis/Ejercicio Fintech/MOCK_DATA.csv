@@ -1,0 +1,55 @@
+id_transaccion,fecha,cuenta,categoria,tipo,monto,metodo_pago
+1,05/03/2024,Bancolombia,Servicios,gasto ,1501232.0,
+2,2024-01-22,BANCO BOGOTÁ,Servicios,ingreso,4432986.0,Transferencia
+3,2024-01-04,Nequi,Impuestos,ingreso,"$1,001,829",transferencia
+4,2024-02-21,Banco Bogotá,Proveedores,gasto,3323253.0,
+5,,Banco Bogotá ,,gasto,4926847.0,
+6,2024-02-12,Nequi,Impuestos,GASTO,-999999,
+7,2024-01-25,Nequi,,GASTO,2294381.0,Tarjeta
+8,2024-01-19,BANCO BOGOTÁ,Impuestos,GASTO,855138.0,Tarjeta
+9,2024-04-12,Banco Bogotá,Proveedores,gasto,3367367.0,Efectivo
+10,2024-01-16,Nequi,Nómina,GASTO,"$3,433,561",Tarjeta
+11,,Bancolombia,Nómina,ingreso,3193143.0,Efectivo
+12,2024-03-22,Bancolombia,Marketing,gasto,1261814.0,Tarjeta
+13,2024-01-07,Banco Bogotá,Impuestos,GASTO,1386242.0,transferencia
+14,2024-01-04,Bancolombia,Ventas,ingreso,3456402.0,Efectivo
+15,2024-01-16,Banco Bogotá ,Impuestos,GASTO,1655200.0,Tarjeta
+16,2024-02-09,BANCO BOGOTÁ,Impuestos,Ingreso,326893.0,transferencia
+17,2024-02-12,Bancolombia,Impuestos,GASTO,4034977.0,Tarjeta
+18,2024-04-06,Bancolombia,,Ingreso,377634.0,Transferencia
+19,2024-04-24,Banco Bogotá ,Marketing,GASTO,2857541.0,Transferencia
+20,2024-01-04,BANCO BOGOTÁ,Nómina,gasto ,,transferencia
+21,2024-04-15,Nequi,Marketing,GASTO,4429182.0,
+22,2024-02-06,BANCO BOGOTÁ,Marketing,gasto,757214.0,
+23,10-03-2024,Caja,Marketing,gasto,3737695.0,Transferencia
+24,2024-04-12,Banco Bogotá,Nómina,Ingreso,3747718.0,Transferencia
+25,2024-03-19,Banco Bogotá,Nómina,gasto,2938488.0,
+26,2024-02-12,Caja,Impuestos,ingreso,4986763.0,Efectivo
+27,2024-03-25,Banco Bogotá ,Marketing,gasto ,2492903.0,
+28,2024-04-21,Caja,Ventas,gasto ,4312459.0,Tarjeta
+29,2024-02-21,Nequi,,ingreso,841911.0,Efectivo
+30,2024-01-01,Nequi,,Ingreso,3002225.0,Tarjeta
+31,2024-01-31,Banco Bogotá,Nómina,ingreso,2999648.0,Transferencia
+32,2024-03-22,Nequi,Proveedores,ingreso,1294500.0,Efectivo
+33,2024-03-04,Banco Bogotá,Proveedores,gasto ,4715033.0,Tarjeta
+34,2024-02-21,Caja,Proveedores,GASTO,617031.0,Tarjeta
+35,2024-01-28,Caja,Servicios,gasto ,3766845.0,Efectivo
+36,2024-02-09,Bancolombia,Impuestos,gasto ,1733869.0,transferencia
+37,2024-03-04,Bancolombia,Proveedores,gasto,"$832,881",
+38,2024-01-19,Caja,Impuestos,ingreso,3624356.0,Tarjeta
+39,,Banco Bogotá,Proveedores,gasto ,4860846.0,
+40,2024-03-13,Caja,Ventas,ingreso,2563024.0,
+41,2024-01-19,Caja,Impuestos,gasto,3145236.0,Transferencia
+42,2024-03-07,Banco Bogotá ,Proveedores,ingreso,,
+43,2024-03-07,Caja,,gasto ,1900874.0,Tarjeta
+44,2024-04-24,Nequi,Nómina,ingreso,4769824.0,Transferencia
+45,2024-02-18,Banco Bogotá,Impuestos,gasto,4596543.0,Efectivo
+46,2024-01-07,Banco Bogotá ,,GASTO,2468598.0,Tarjeta
+47,2024-03-28,Bancolombia,,ingreso,1846755.0,Transferencia
+48,2024-04-12,BANCO BOGOTÁ,,gasto ,,Transferencia
+49,2024-01-22,Banco Bogotá,Servicios,gasto,1242314.0,
+50,2024-03-13,Nequi,Nómina,gasto ,439847.0,Efectivo
+51,2024-01-16,Banco Bogotá,Nómina,gasto ,4089315.0,Tarjeta
+52,2024-04-15,Bancolombia,Marketing,ingreso,2686896.0,Tarjeta
+4,2024-02-21,Banco Bogotá,Proveedores,gasto,3323253.0,
+11,,Bancolombia,Nómina,ingreso,3193143.0,Efectivo

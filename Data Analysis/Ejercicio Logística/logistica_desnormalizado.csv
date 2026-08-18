@@ -1,0 +1,42 @@
+id_envio,id_venta_relacionada,transportista,calificacion_transportista,almacen_origen,ciudad_origen,fecha_envio,dias_estimados_entrega,costo_envio_mxn,estado_envio,peso_kg
+L0001,V0019,LogiMex,4.1,Almacen B,Monterrey,02-08-2024,7,472.86,En transito,24.75
+L0002,V0034,EntregaYa,4.7,Almacen C,Guadalajara,03-04-2024,5,273.57,Entregado,0.85
+L0003,V0015,EntregaYa,4.7,Almacen A,CDMX,15-03-2024,10,835.63,Cancelado,1.54
+L0004,V0022,EntregaYa,4.7,Almacen C,Guadalajara,14-08-2024,1,522.92,Cancelado,3.34
+L0005,V0006,Paqueteria Norte,3.8,Almacen A,CDMX,20-03-2024,7,182.4,Entregado,11.6
+L0006,V0012,Paqueteria Norte,3.8,Almacen B,Monterrey,05-09-2024,2,625.39,entregado,21.71
+L0007,V0044,LogiMex,4.1,Almacen A,CDMX,11-04-2024,2,874.39,Cancelado,18.99
+L0008,V0036,Envios Rapidos SA,4.5,Almacen A,CDMX,13-10-2024,4,758.15,En transito,8.86
+L0009,V0024,LogiMex,4.1,Almacen C,Guadalajara,28-07-2024,3,862.7,EN TRANSITO,9.95
+L0010,V0006,EntregaYa,4.7,Almacen B,Monterrey,16-05-2024,1,,Cancelado,24.82
+L0011,V0036,EntregaYa,4.7,Almacen A,CDMX,08-09-2024,1,571.49,EN TRANSITO,5.94
+L0012,V0043,Paqueteria Norte,3.8,Almacen C,Guadalajara,27-02-2024,2,219.48,Retrasado,20.92
+L0013,V0007,Paqueteria Norte,3.8,Almacen B,Monterrey,05-06-2024,2,218.33,En transito,19.54
+L0014,V0034,Paqueteria Norte,3.8,Almacen A,CDMX,19-01-2024,7,816.93,En transito,10.47
+L0015,V0032,LogiMex,4.1,Almacen C,Guadalajara,08-01-2024,3,495.03,Cancelado,6.56
+L0016,V0029,LogiMex,4.1,Almacen A,CDMX,14-10-2024,1,740.33,Cancelado,12.34
+L0017,V0019,Paqueteria Norte,3.8,Almacen A,CDMX,12-05-2024,7,108.5,En transito,4.68
+L0018,V0031,Envios Rapidos SA,4.5,Almacen B,Monterrey,15-03-2024,2,120.51,En transito,23.99
+L0019,V0024,EntregaYa,4.7,Almacen A,CDMX,18-04-2024,10,732.08,Retrasado,15.23
+L0020,V0031,EntregaYa,4.7,Almacen B,Monterrey,24-10-2024,10,332.54,EN TRANSITO,14.92
+L0021,V0044,LogiMex,4.1,Almacen C,Guadalajara,06-01-2024,4,183.22,Cancelado,1.08
+L0022,V0038,Paqueteria Norte,3.8,Almacen C,Guadalajara,07-05-2024,10,425.3,Cancelado,10.44
+L0023,V0026,LogiMex,4.1,Almacen A,CDMX,13-03-2024,1,157.03,Entregado,16.22
+L0024,V0019,LogiMex,4.1,Almacen A,CDMX,01-03-2024,7,183.75,EN TRANSITO,23.58
+L0025,V0011,EntregaYa,4.7,Almacen B,Monterrey,22-04-2024,5,228.89,entregado,5.44
+L0026,V0004,Envios Rapidos SA,4.5,Almacen C,Guadalajara,15-09-2024,10,728.39,Entregado,10.0
+L0027,V0015,Envios Rapidos SA,4.5,Almacen B,Monterrey,17-10-2024,2,287.38,Cancelado,15.33
+L0028,V0020,Envios Rapidos SA,4.5,Almacen A,CDMX,18-07-2024,2,675.44,Retrasado,20.53
+L0029,V0039,EntregaYa,4.7,Almacen C,Guadalajara,20-02-2024,5,129.24,EN TRANSITO,18.5
+L0030,V0036,Paqueteria Norte,3.8,Almacen B,Monterrey,26-09-2024,10,235.43,EN TRANSITO,20.46
+L0031,V0043,LogiMex,4.1,Almacen B,Monterrey,03-02-2024,3,894.44,Entregado,21.77
+L0032,V0040,Envios Rapidos SA,4.5,Almacen C,Guadalajara,17-08-2024,5,856.58,Cancelado,16.29
+L0033,V0025,EntregaYa,4.7,Almacen B,Monterrey,21-09-2024,5,798.04,Entregado,6.02
+L0034,V0016,Envios Rapidos SA,4.5,Almacen C,Guadalajara,10-08-2024,1,305.98,EN TRANSITO,20.52
+L0035,V0025,EntregaYa,4.7,Almacen B,Monterrey,01-05-2024,4,348.55,En transito,15.98
+L0036,V0032,Envios Rapidos SA,4.5,Almacen A,CDMX,02-09-2024,2,385.88,EN TRANSITO,22.32
+L0037,V0031,EntregaYa,4.7,Almacen C,Guadalajara,14-05-2024,2,831.68,entregado,8.0
+L0038,V0021,EntregaYa,4.7,Almacen C,Guadalajara,04-01-2024,2,245.67,entregado,18.05
+L0039,V0034,Envios Rapidos SA,4.5,Almacen C,Guadalajara,30-03-2024,1,328.13,entregado,18.69
+L0040,V0028,EntregaYa,4.7,Almacen A,CDMX,26-03-2024,7,248.77,Retrasado,9.61
+L0016,V0029,LogiMex,4.1,Almacen A,CDMX,14-10-2024,1,740.33,Cancelado,12.34
